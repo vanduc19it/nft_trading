@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+.navbar {
+    display: flex;
+    margin: 42px 135px;
+    justify-content: space-between;
+}
+.avatar {
+    background-color: #1E50FF;
+    font-weight: bold;
+    transform: rotate(-10deg); 
+    font-size: 22px;
+    width: 34px;
+    height: 34px;
+}
+.logo_name {
+    font-size:24px;
+    line-height: 24px;
+    font-weight: 700;
+    font-style: normal;
+    margin-left: 8px;
+    
+}
+.logo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+.ul {
+    display: flex;
+    justify-content: space-between;
+    width: 228px;
+    list-style: none;
+    height: 44px;
+    align-items: center;
+    color: #B1B5C1;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 28px;
+    
+}
+.search {
+    border: 1px solid #131528;
+    border-radius: 6px;
+    padding-left: 10px;
+    color: #B1B5C1;
+    
+}
+.input {
+    width: 428px;
+    height: 44px;
+    border: none;
+    background: transparent;
+    color: #B1B5C1;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    padding-left: 6px;
+    font-family: 'Space Grotesk';
+}
+.input:focus-visible {
+    outline: none;
+}
+
+.btn_connect_wallet {
+    width: 166px;
+    height: 44px;
+    font-family: 'Space Grotesk';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    background: #131528;
+    color: #fff;
+    border: none;
+}
+.avatar_user {
+    background: #131528;
+    margin-right: 40px;
+}
+.logo_user {
+    display: flex;
+    justify-content: space-evenly;
+}
