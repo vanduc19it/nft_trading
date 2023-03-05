@@ -1,278 +1,577 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
 .main {
+  margin: 100px 150px;
+  --gray: #B1B5C1;
+  --dark2: #131528;
+  --dark3: #192243;
+  --dark4:#05113B;;
+  --primary : #1E50FF;
+}
+.intro {
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding: 6rem;
-  min-height: 100vh;
 }
-
-.description {
-  display: inherit;
-  justify-content: inherit;
-  align-items: inherit;
-  font-size: 0.85rem;
-  max-width: var(--max-width);
-  width: 100%;
-  z-index: 2;
-  font-family: var(--font-mono);
-}
-
-.description a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.description p {
-  position: relative;
-  margin: 0;
-  padding: 1rem;
-  background-color: rgba(var(--callout-rgb), 0.5);
-  border: 1px solid rgba(var(--callout-border-rgb), 0.3);
-  border-radius: var(--border-radius);
-}
-
-.code {
-  font-weight: 700;
-  font-family: var(--font-mono);
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(25%, auto));
-  width: var(--max-width);
-  max-width: 100%;
-}
-
-.card {
-  padding: 1rem 1.2rem;
-  border-radius: var(--border-radius);
-  background: rgba(var(--card-rgb), 0);
-  border: 1px solid rgba(var(--card-border-rgb), 0);
-  transition: background 200ms, border 200ms;
-}
-
-.card span {
-  display: inline-block;
-  transition: transform 200ms;
-}
-
-.card h2 {
+.button_explore {
+  background: #1E50FF;
+  border-radius: 6px;
+  width: 180px;
+  height: 60px;
+  color: #FFFFFF;
+  font-style: normal;
   font-weight: 600;
-  margin-bottom: 0.7rem;
+  font-family: 'Space Grotesk';
+  font-size: 18px;
+  line-height: 30px;
+  border: none;
 }
 
-.card p {
-  margin: 0;
-  opacity: 0.6;
-  font-size: 0.9rem;
-  line-height: 1.5;
-  max-width: 30ch;
-}
 
-.center {
+.h1 {
+font-family: 'Space Grotesk';
+font-style: normal;
+font-weight: 700;
+font-size: 80px;
+line-height: 90px;
+width: 621px;
+
+}
+.h2 {
+  width: 470px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 30px;
+  font-family: 'Space Grotesk';
+  color: #B1B5C1;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  padding: 4rem 0;
+  flex-direction:column;
+  justify-content: space-between;
+  padding: 10px 0;
+  height: 220px;
 }
-
-.center::before {
-  background: var(--secondary-glow);
-  border-radius: 50%;
-  width: 480px;
-  height: 360px;
-  margin-left: -400px;
+.img1 {
+  margin-top: 10px;
 }
-
-.center::after {
-  background: var(--primary-glow);
-  width: 240px;
-  height: 180px;
-  z-index: -1;
-}
-
-.center::before,
-.center::after {
-  content: '';
-  left: 50%;
-  position: absolute;
-  filter: blur(45px);
-  transform: translateZ(0);
-}
-
-.logo,
-.thirteen {
-  position: relative;
-}
-
-.thirteen {
+.img_intro {
+  margin-top: 60px;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 75px;
-  height: 75px;
-  padding: 25px 10px;
-  margin-left: 16px;
-  transform: translateZ(0);
-  border-radius: var(--border-radius);
-  overflow: hidden;
-  box-shadow: 0px 2px 8px -1px #0000001a;
+  justify-content: space-between;
 }
-
-.thirteen::before,
-.thirteen::after {
-  content: '';
-  position: absolute;
-  z-index: -1;
-}
-
-/* Conic Gradient Animation */
-.thirteen::before {
-  animation: 6s rotate linear infinite;
-  width: 200%;
-  height: 200%;
-  background: var(--tile-border);
-}
-
-/* Inner Square */
-.thirteen::after {
-  inset: 0;
-  padding: 1px;
-  border-radius: var(--border-radius);
-  background: linear-gradient(
-    to bottom right,
-    rgba(var(--tile-start-rgb), 1),
-    rgba(var(--tile-end-rgb), 1)
-  );
-  background-clip: content-box;
-}
-
-/* Enable hover only on non-touch devices */
-@media (hover: hover) and (pointer: fine) {
-  .card:hover {
-    background: rgba(var(--card-rgb), 0.1);
-    border: 1px solid rgba(var(--card-border-rgb), 0.15);
-  }
-
-  .card:hover span {
-    transform: translateX(4px);
-  }
-}
-
-@media (prefers-reduced-motion) {
-  .thirteen::before {
-    animation: none;
-  }
-
-  .card:hover span {
-    transform: none;
-  }
-}
-
-/* Mobile */
-@media (max-width: 700px) {
-  .content {
-    padding: 4rem;
-  }
-
-  .grid {
-    grid-template-columns: 1fr;
-    margin-bottom: 120px;
-    max-width: 320px;
-    text-align: center;
-  }
-
-  .card {
-    padding: 1rem 2.5rem;
-  }
-
-  .card h2 {
-    margin-bottom: 0.5rem;
-  }
-
-  .center {
-    padding: 8rem 0 6rem;
-  }
-
-  .center::before {
-    transform: none;
-    height: 300px;
-  }
-
-  .description {
-    font-size: 0.8rem;
-  }
-
-  .description a {
-    padding: 1rem;
-  }
-
-  .description p,
-  .description div {
-    display: flex;
-    justify-content: center;
-    position: fixed;
+.banner {
+    background: #FFC935;
+    height: 146px;
     width: 100%;
-  }
-
-  .description p {
-    align-items: center;
-    inset: 0 0 auto;
-    padding: 2rem 1rem 1.4rem;
-    border-radius: 0;
-    border: none;
-    border-bottom: 1px solid rgba(var(--callout-border-rgb), 0.25);
-    background: linear-gradient(
-      to bottom,
-      rgba(var(--background-start-rgb), 1),
-      rgba(var(--callout-rgb), 0.5)
-    );
-    background-clip: padding-box;
-    backdrop-filter: blur(24px);
-  }
-
-  .description div {
-    align-items: flex-end;
-    pointer-events: none;
-    inset: auto 0 0;
-    padding: 2rem;
-    height: 200px;
-    background: linear-gradient(
-      to bottom,
-      transparent 0%,
-      rgb(var(--background-end-rgb)) 40%
-    );
-    z-index: 1;
-  }
+    margin-top: 100px;
+}
+.banner_img {
+    width: 100%;
+    transform: rotate(2deg);
+}
+.detail{
+    margin-top: 180px;
+    display: flex;
+    justify-content: space-between
+}
+.detail_title {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 44px;
+  line-height: 54px;
+}
+.detail_description {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 30px;
+  color: var(--gray);
+  margin-top: 16px;
+}
+.time {
+  display: flex;
+  justify-content:space-between;
+  width: 340px;
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 28px;
+  text-align: center;
+  margin-top: 26px;
+  margin-bottom: 26px;
+}
+.detail_time {
+  margin-top: 10px;
+  padding-top: 5px;
+  width: 70px;
+  height: 70px;
+  background: var(--dark2);
+  border-radius: 4px;
+}
+.detail_time_1 {
+  color: var(--gray);
+}
+.current_bid {
+  color: var(--gray);
+  margin-bottom: 10px; 
+}
+.price {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 30px;
+}
+.btn_detail {
+  width: 360px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+}
+.btn_place_bid {
+  width: 165px;
+  height: 60px;
+  background-color: var(--primary);
+  border: none;
+  color: white;
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 30px;
+}
+.btn_view_art {
+  color: white;
+  width: 165px;
+  height: 60px;
+  background-color: var(--dark2);
+  border: none;
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 30px;
+}
+.vertical_line {
+  border: 2px solid var(--dark2);
+  height: 470px;
 }
 
-/* Tablet and Smaller Desktop */
-@media (min-width: 701px) and (max-width: 1120px) {
-  .grid {
-    grid-template-columns: repeat(2, 50%);
-  }
+/* nft collection */
+.collection {
+  margin-top: 160px;
+}
+.collection_heading {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 44px;
+  line-height: 54px;
+  text-align: center;
+  margin-left: 40px;
+}
+.collection_des {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 30px;
+  text-align: center;
+  color: var(--gray);
+
+}
+.card {
+  display: flex;
+  margin-top: 56px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+}
+.nft_card {
+  background: var(--dark2);
+  border-radius: 12px;
+  width: 370px;
+  height: 620px;
+  padding: 20px 20px;
+  margin-bottom: 40px;
+}
+.nft_card:hover {
+  border: 1px solid var(--primary);
+ 
+}
+.nft_img {
+  width: 330px;
+  height: 428px;
+
+}
+.nft_name {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 32px;
+  margin-top: 18px;
+}
+.nft_author {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 28px;
+  color: var(--gray);
+  margin-top: 2px;
+}
+.nft_info {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+.info_name {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  color: var(--gray);
 }
 
-@media (prefers-color-scheme: dark) {
-  .vercelLogo {
-    filter: invert(1);
-  }
-
-  .logo,
-  .thirteen img {
-    filter: invert(1) drop-shadow(0 0 0.3rem #ffffff70);
-  }
+.info_detail {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 30px;
+  
+}
+.view_more {
+  text-align: center;
+  margin-top: 20px;
+}
+.btn_view_more {
+  width: 159px;
+  height: 60px;
+  background: var(--primary);
+  border-radius: 6px;
+  border: none;
+  color: #FFFFFF;
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 30px;
+}
+/* category */
+ 
+.category {
+  margin-top: 150px;
+} 
+.category_title {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 50px;
+}
+.category_title h2 {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 44px;
+  line-height: 54px;
+}
+.nft_category {
+  display: flex;
+  justify-content: space-between;
+}
+.card_category {
+  width: 270px;
+  height: 334px;
+  background: var(--dark2);
+  border-radius: 12px;
+  padding: 20px 20px;
+}
+.card_category:hover {
+  border: 1px solid var(--primary);
+}
+.category_img {
+  width: 230px;
+  height: 230px;
+}
+.btn_category {
+  width: 230px;
+  height: 44px;
+  margin-top: 14px;
+  background: var(--dark3);
+  border-radius: 6px;
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 28px;
+  border: none;
+  color: white;
+}
+.btn_arrow {
+   width: 108px;
+   display: flex;
+   justify-content: space-between;
+}
+.btn_left {
+  width: 44px;
+  height: 44px;
+  background-color: var(--dark2);
+  border: none;
+  color: white;
+}
+.btn_right {
+  width: 44px;
+  height: 44px;
+  background-color: var(--primary);
+  border: none;
+  color: white;
+}
+.top_collection {
+  margin-top:150px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+.top_collection h3 {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 44px;
+  line-height: 54px;
+  text-align: center;
+}
+.btn_choose_collection {
+  width: 540px;
+  height: 60px;
+  display: flex;
+  text-align: center;
+  justify-content: space-between;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+.btn_choose {
+  width: 170px;
+  height: 60px;
+  background: var(--dark2);
+  border-radius: 6px;
+  border:none;
+  color: #FFFFFF;
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 30px;
+}
+.btn_choose:focus {
+  background: var(--primary);
+}
+.card_collections {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.card_collection {
+  width: 370px;
+  height: 94px;
+  background: var(--dark2);
+  border-radius: 12px;
+  display: flex;
+  justify-content:space-between;
+  padding: 20px 20px;
+  align-items: center;
+  margin-bottom: 40px;
+}
+.collection_info {
+  display: flex;
+  justify-content:space-between;
+  align-items: center;
+}
+.collection_info h4 {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 30px;
+}
+.collection_info p {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+}
+.avatar {
+  margin-right: 10px ;
+}
+.collection_percent {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  color: #56BD83;
 }
 
-@keyframes rotate {
-  from {
-    transform: rotate(360deg);
-  }
-  to {
-    transform: rotate(0deg);
-  }
+.btn_view_collection {
+  width: 238px;
+  height: 60px;
+  background: var(--primary);
+  border-radius: 6px;
+  border: none;
+  color: #FFFFFF;
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 30px;
+  margin-top: 20px;
 }
+.artist {
+   margin-top: 150px;
+   
+}
+.nft_artist {
+  display: flex;
+  justify-content: space-between;
+}
+.card_artist {
+  width: 370px;
+  height: 264px;
+  background: var(--dark2);
+  border-radius: 12px;
+  padding: 20px 20px;
+}
+.artist_img {
+  width: 330px;
+height: 150px;
+border-radius: 6px;
+}
+.artist_info {
+  display: flex;
+  justify-content: space-between;
+  margin-top:20px;
+}
+.artist_info h4 {
+  font-family: 'Space Grotesk';
+font-style: normal;
+font-weight: 600;
+font-size: 18px;
+line-height: 30px;
+}
+.artist_info p {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  color: var(--gray);
+}
+.btn_artist {
+  width: 97px;
+  height: 44px;
+  background: var(--primary);
+  border-radius: 4px;
+  color: #FFFFFF;
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 28px;
+  border: none;
+}
+.btn_view_artist {
+  display: flex;
+  justify-content:center;
+  margin-top: 40px;
+}
+.help_title h3 {
+  text-align: center;
+  font-family: 'Space Grotesk';
+font-style: normal;
+font-weight: 700;
+font-size: 44px;
+line-height: 54px;
+margin-top: 160px;
+margin-bottom: 50px;
+}
+.help {
+  display: flex;
+  justify-content: space-between;
+}
+.card_help {
+  background: var(--dark4);
+  border-radius: 12px;
+  width: 370px;
+  height: 326px;
+  text-align: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px 25px;
+}
+.card_help h4 {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 30px;
+  margin-bottom: 10px;
+  margin-top: 20px;
+}
+.card_help p {
+  font-family: 'Space Grotesk';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 30px;
+color: var(--gray);
+}
+.help_img {
+  width: 85px;
+  height: 64px;
+}
+.community {
+  margin-top: 250px;
+  height: 428px;
+  border-radius: 12px;
+  text-align: center;
+  padding: 20px 60px;
+  background: var(--dark4);
+}
+.community h2 {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 44px;
+  line-height: 54px;
+  margin-bottom: 10px;
+}
+.community p {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 30px;
+  color: var(--gray);
+  margin-bottom: 20px;
+}
+.community_img {
+  width: 250px;
+  height: 180px;
+}
+.btn_community {
+  width: 172px;
+  height: 60px;
+  background: var(--primary);
+  border-radius: 6px;
+  border: none;
+  color: #FFFFFF;
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 30px;
+  }
