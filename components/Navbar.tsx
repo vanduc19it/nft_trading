@@ -1,4 +1,5 @@
-import { Avatar, Typography, Input, Button } from 'antd'
+import { Avatar, Typography, Input, Button} from 'antd'
+
 import { SearchOutlined, UserOutlined } from '@ant-design/icons';
 import React from 'react'
 import Link from 'next/link';
@@ -33,6 +34,7 @@ function Navbar() {
             <Avatar className={styles.avatar_user} icon={<UserOutlined />} size={44}/>
             <Button className={styles.btn_connect_wallet}>Connect Wallet</Button>
           </div>
+         
       </nav>
   )
 }
