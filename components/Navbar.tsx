@@ -1,11 +1,30 @@
+declare var window: any;
 import { Avatar, Typography, Input, Button} from 'antd'
 
 import { SearchOutlined, UserOutlined } from '@ant-design/icons';
-import React from 'react'
+import React, { useContext } from 'react'
 import Link from 'next/link';
 import styles from '@/styles/Navbar.module.css'
+import flatted from 'flatted';
+import CircularJSON from 'circular-json';
 
-function Navbar() {
+
+import {ethers} from 'ethers'
+import { useState } from 'react'
+
+type NavbarProps = {
+  web3Handler: any;
+  address:any;
+  balance: any;
+  nft:any;
+  marketplace: any;
+}
+
+const Navbar = ({ web3Handler, address, balance, nft, marketplace }: NavbarProps) =>{
+
+  const[NFT, setNFT] = useState("");
+  console.log(nft)
+
   return (
       <nav className={styles.navbar}>
           <div className={styles.logo}>
@@ -22,7 +41,7 @@ function Navbar() {
                   <Link href="/">Explore</Link>
                 </li>
                 <li>
-                  <Link href="/">Create</Link>
+                  <Link href={{ pathname: '/createNFT' }} >Create</Link>
                 </li>
                 <li>
                   <Link href="/">Page</Link>
@@ -32,7 +51,11 @@ function Navbar() {
          
           <div className={styles.logo_user}>
             <Avatar className={styles.avatar_user} icon={<UserOutlined />} size={44}/>
-            <Button className={styles.btn_connect_wallet}>Connect Wallet</Button>
+            {
+              address ? <p>{address}: </p> :            <Button className={styles.btn_connect_wallet} onClick={web3Handler}>Connect Wallet</Button>
+            }
+
+           
           </div>
          
       </nav>

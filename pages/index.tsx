@@ -1,3 +1,4 @@
+declare var window: any;
 import Head from 'next/head'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
@@ -5,9 +6,121 @@ import Image from 'next/image'
 import { Avatar, Button } from 'antd'
 import { ArrowLeftOutlined, ArrowRightOutlined  } from '@ant-design/icons';
 
+import {ethers} from 'ethers'
+import { useContext, useEffect, useState } from 'react'
+
+import MarketplaceAbi from './datasmc/abis/maketplace.json';
+import MarketplaceAddress from './datasmc/address/marketplaceAddress.json';
+import NFTAbi from './datasmc/abis/NFT.json';
+import NFTAddress from './datasmc/address/nftAddress.json';
+import Navbar from '@/components/Navbar';
+
 const inter = Inter({ subsets: ['latin'] })
-const a = "aa"
 export default function Home() {
+
+
+  const [provider, setProvider] = useState(null);
+  const [address, setAddress] = useState(null);
+  const [balance, setBalance] = useState(null);
+
+
+  interface MarketplaceContract extends ethers.Contract {
+    // khai báo các hàm trong contract marketplace
+    itemCount(): Promise<number>;
+    createMarketItem(nftAddress: string, tokenId: string, price: string): Promise<void>;
+    //...
+  }
+
+  const [nft, setNFT] = useState<Record<string, any>>({});
+  const [marketplace, setMarketplace] = useState<MarketplaceContract>();
+  
+
+  interface MyProps {
+    web3Handler: () => Promise<void>;
+  }
+  
+  // console.log(balance)
+   //handle button conect wallet
+   const handleWeb3 = async () => {
+    //init provider
+    const provider:any = new ethers.providers.Web3Provider(window.ethereum)
+    await provider.send("eth_requestAccounts", []);
+    const signer:any = provider.getSigner();
+    //get address and balance
+    const address:any = await signer.getAddress();
+    const bigBalance:any = await signer.getBalance();
+    const balance:any = Number.parseFloat(ethers.utils.formatEther(bigBalance))
+    setAddress(address); //set address to state wallet
+    setBalance(balance); //set balance to state wallet
+    setProvider(provider);
+
+
+    loadContracts(signer)
+}
+
+const loadContracts = async (signer:any) => {
+  // Get deployed copies of contracts
+  const marketplace:any = new ethers.Contract(MarketplaceAddress.address, MarketplaceAbi, signer)
+  setMarketplace(marketplace)
+
+  
+  const nft = new ethers.Contract(NFTAddress.address, NFTAbi, signer)
+  setNFT(nft)
+
+}
+
+console.log(address)
+console.log(nft)
+console.log(marketplace);
+
+
+
+type NFT = {
+  id: number;
+  name: string;
+  tokenURI: (tokenId: number) => Promise<string>;
+}
+const [items, setItems] = useState([])
+  const loadMarketplaceItems = async () => {
+    // Load all unsold items
+    if(marketplace !== undefined) {
+      const itemCount = await marketplace.itemCount()
+
+      console.log(itemCount)
+
+      let items:any = []
+
+      for (let i = 1; i <= itemCount; i++) {
+        const item = await marketplace.items(i)
+        
+        // if (!item.sold) {
+        //   // get uri url from nft contract
+        //   const uri = await nft.tokenURI(item.tokenId)
+        //   // use uri to fetch the nft metadata stored on ipfs 
+        //   const response = await fetch(uri)
+        //   const metadata = await response.json()
+        //   // get total price of item (item price + fee)
+        //   const totalPrice = await marketplace.getTotalPrice(item.itemId)
+        //   // Add item to items array
+        //   items.push({
+        //     totalPrice,
+        //     itemId: item.itemId,
+        //     seller: item.seller,
+        //     name: metadata.name,
+        //     description: metadata.description,
+        //     image: metadata.image
+        //   })
+        // }
+      }
+      setItems(items)
+    }
+   
+  }
+
+  useEffect(() => {
+    loadMarketplaceItems()
+  }, [])
+
   return (
     <>
       <Head>
@@ -16,6 +129,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Navbar web3Handler={handleWeb3} address={address} balance={balance} nft={nft} marketplace={marketplace}/>
       <main className={styles.main}>
           <div className={styles.intro}>
             <div className={styles.h1}>
