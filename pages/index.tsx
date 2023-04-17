@@ -73,8 +73,8 @@ const loadContracts = async (signer:any) => {
 
 }
 
-console.log(address)
-console.log(nft)
+// console.log(address)
+// console.log(nft)
 console.log(marketplace);
 
 
@@ -124,6 +124,7 @@ const [items, setItems] = useState([])
   useEffect(() => {
     loadMarketplaceItems()
   }, [])
+  console.log(items)
 
   return (
     <>
