@@ -1,3 +1,4 @@
+declare var window: any;
 import { useEffect, useState } from 'react'
 import { ethers } from "ethers"
 import { Row, Form, Button } from 'react-bootstrap'
@@ -11,7 +12,7 @@ import MarketplaceAbi from './datasmc/abis/maketplace.json';
 import MarketplaceAddress from './datasmc/address/marketplaceAddress.json';
 import NFTAbi from './datasmc/abis/NFT.json';
 import NFTAddress from './datasmc/address/nftAddress.json';
-declare var window: any;
+
 
 type CreateProps = {
     web3Handler: any;
@@ -44,12 +45,15 @@ const Create = () => {
 
   const [name, setName] = useState('')
   const [description, setDescription] = useState('')
-  
-  const provider:any = new ethers.providers.Web3Provider(window.ethereum);
+  if(typeof window !== "undefined") {
+    const provider:any = new ethers.providers.Web3Provider(window.ethereum);
 
-  const signer:any = provider.getSigner();
-  const nft:any = new ethers.Contract(NFTAddress.address, NFTAbi, signer)
-  const marketplace = new ethers.Contract(MarketplaceAddress.address, MarketplaceAbi, signer)
+    const signer:any = provider.getSigner();
+    var nft:any = new ethers.Contract(NFTAddress.address, NFTAbi, signer)
+    var marketplace = new ethers.Contract(MarketplaceAddress.address, MarketplaceAbi, signer)
+    
+  }
+
 
 const [imageBuffer, setImageBuffer] = useState(null);
 
