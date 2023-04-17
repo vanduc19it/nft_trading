@@ -42,6 +42,9 @@ export default function Home() {
   // console.log(balance)
    //handle button conect wallet
    const handleWeb3 = async () => {
+    if(typeof window !== "undefined") {
+
+    
     //init provider
     const provider:any = new ethers.providers.Web3Provider(window.ethereum)
     await provider.send("eth_requestAccounts", []);
@@ -56,6 +59,7 @@ export default function Home() {
 
 
     loadContracts(signer)
+  }
 }
 
 const loadContracts = async (signer:any) => {
